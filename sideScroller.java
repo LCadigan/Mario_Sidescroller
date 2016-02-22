@@ -69,8 +69,7 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       addMouseMotionListener(this);
       addMouseListener(this);
       globalXpos=0;
-      //End of init
-      //words
+      
    }//init()
 
    public String whatDirection(Sprite Player, Sprite Object){
@@ -271,9 +270,11 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       }
       
       //IMPORTANT CHECKS
-      System.out.println("myMario.dx = "+myMario.dx+", myMario.dy ="+myMario.dy);
-      System.out.println("globalXpos = "+globalXpos);
-     // g.fillRect(0,0,1000,1000);
+      //System.out.println("myMario.dx = "+myMario.dx+", myMario.dy ="+myMario.dy);
+      //System.out.println("globalXpos = "+globalXpos);
+      System.out.println("is eraser is " +isEraser);
+      
+      // g.fillRect(0,0,1000,1000);
       if(myMario.isAlive)//myMario.isAlive==true)		//check if the robot is alive.  Draw it if it is.
       {  
          // healthBox: g.drawRect(myMario.xpos-myMario.health*5,myMario.ypos-20,10*myMario.health,10); 
@@ -394,9 +395,10 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
             case "9":
                { brickNum= 9;
                   break;}
-            case "e":
+            case "E":
                {
                   isEraser=true;
+                  System.out.println("E");
                }
             default:
                break;
@@ -461,6 +463,7 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       }
       if(gameStart==false){
          if(isEraser){
+            
             for(int i = 0; i<GoombaList.size(); i++){
                if(GoombaList.get(i).rect.contains(mouseX+globalXpos,mouseY)){
                   GoombaList.remove(i);
@@ -472,7 +475,7 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
                }
             }
          }
-         if(goombaRect.contains(mouseX,mouseY)){
+         else if(goombaRect.contains(mouseX,mouseY)){
             isGoomba=true;
             isBrick=false;
             isEraser=false;
