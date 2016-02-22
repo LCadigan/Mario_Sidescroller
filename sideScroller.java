@@ -69,7 +69,7 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       addMouseMotionListener(this);
       addMouseListener(this);
       globalXpos=0;
-      
+      //End of init
    }//init()
 
    public String whatDirection(Sprite Player, Sprite Object){
@@ -102,7 +102,7 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       myMario.dy = isGravity ? myMario.dy+1 : myMario.dy;
       myMario.move();
       
-         myMario.animate(); 
+      myMario.animate(); 
       
       for(int i=0; i<GoombaList.size();i++){
          GoombaList.get(i).animate();
@@ -176,7 +176,8 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
                      GoombaList.get(k).dx=-GoombaList.get(k).dx;
                      break;}
                default:
-                  {  if(GoombaList.get(k).onSurface){
+                  {  
+                     if(GoombaList.get(k).onSurface){
                         GoombaList.get(k).dx-=GoombaList.get(k).dx;
                      }
                      isGravity=true;
@@ -188,24 +189,25 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       //for Mario and Goombas
       for (int k=0;k<GoombaList.size();k++){
          switch(whatDirection(myMario,GoombaList.get(k))){
-               case "above":
-                  {
-                     GoombaList.get(k).isShell=true;
-                     myMario.dy=-20;
-                     break;
-                  }
-               case "below":
-                  {
-                     myMario.isAlive=false;
-                     break;}
-               case "side":
-                  {
-                     myMario.isAlive=false;
-                     break;}
-               default:
-                  {break;}
-        }
-
+            case "above":
+               {
+                  GoombaList.get(k).isShell=true;
+                  myMario.dy=-20;
+                  break;
+               }
+            case "below":
+               {
+                  myMario.isAlive=false;
+                  break;}
+            case "side":
+               {
+                  myMario.isAlive=false;
+                  break;}
+            default:
+               {
+                  break;}
+         }
+      
       }
       
    }
@@ -399,11 +401,11 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
                break;
          }
          
-     
-
       
       
-   } 
+      
+      
+      } 
    }//keyReleased() - don't use this one
    public void keyTyped( KeyEvent event )
    {
