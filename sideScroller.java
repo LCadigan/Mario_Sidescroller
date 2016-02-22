@@ -70,6 +70,7 @@ public class sideScroller extends Applet implements Runnable, KeyListener,MouseM
       addMouseListener(this);
       globalXpos=0;
       //End of init
+      //words
    }//init()
 
    public String whatDirection(Sprite Player, Sprite Object){
